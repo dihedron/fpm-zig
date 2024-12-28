@@ -13,7 +13,7 @@ latest:
 
 .phony: verify
 verify:
-	@/home/andrea/Desktop/minisign -Vm zig-linux-x86_64-$(VERSION).tar.xz -P $(SIGNATURE)
+	@minisign -Vm zig-linux-x86_64-$(VERSION).tar.xz -P $(SIGNATURE)
 
 .phony: setup-tools
 setup-tools:

@@ -1,10 +1,10 @@
-# fpm-pdfcpu
+# fpm-zig
 
-A simple Makefile to create `.deb` and `.rpm` packages of the upstream zig compiler.
+A simple Makefile to create `.deb` and `.rpm` packages of the zig compiler.
 
 ## Building a [deb|rpm] package
 
-In order to build the package for the latest verion of the zig compile for Ubuntu or Debian based Linux distributions, run the Makefile as follows:
+In order to build the package for the latest verion of the zig compiler for Ubuntu or Debian based Linux distributions, run the Makefile as follows:
 
 ```bash
 $> make deb
