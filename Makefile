@@ -32,40 +32,41 @@ endif
 	@mv zig-linux-x86_64-$(VERSION)/ zig/
 	@echo -n "Create zig $(VERSION) "
 	@VERSION=$(VERSION) nfpm package --packager deb --target .
-	@rm -rf zig-linux-x86_64-$(VERSION).tar.xz zig-linux-x86_64-$(VERSION).tar.xz/ zig/ *.minisig
+	@rm -rf zig-linux-x86_64-$(VERSION).tar.xz/ zig/ *.minisig
 
 .phony: rpm
-rpm: pdfcpu_$(VERSION)_Linux_x86_64.tar.xz
+rpm: zig_$(VERSION)_Linux_x86_64.tar.xz verify
 ifeq ($(GITLAB_CI),)
 ifeq ($(shell which nfpm),)
 	@echo "Need to install nFPM first..."
 	@go install github.com/goreleaser/nfpm/v2/cmd/nfpm@latest
 endif
 endif
-	@rm -rf pdfcpu_$(VERSION)_Linux_x86_64/ pdfcpu/
-	@tar xvf pdfcpu_$(VERSION)_Linux_x86_64.tar.xz 2>&1 > /dev/null
-	@mv pdfcpu_$(VERSION)_Linux_x86_64/ pdfcpu/
-	@echo -n "Create pdfcpu $(VERSION) "
+	@rm -rf zig-linux-x86_64-$(VERSION).tar.xz/ zig/
+	@tar xvf zig-linux-x86_64-$(VERSION).tar.xz 2>&1 > /dev/null
+	@mv zig-linux-x86_64-$(VERSION)/ zig/
+	@echo -n "Create zig $(VERSION) "
 	@VERSION=$(VERSION) nfpm package --packager rpm --target .
-	@rm -rf pdfcpu_$(VERSION)_Linux_x86_64/ pdfcpu/
+	@rm -rf zig-linux-x86_64-$(VERSION).tar.xz/ zig/ *.minisig
+
 
 # TODO: run a cleanup task removing go/ only once:
 # see https://gist.github.com/APTy/9a9eb218f68bc0b4beb133b89c9def14
 
 .phony: apk
-apk: pdfcpu_$(VERSION)_Linux_x86_64.tar.xz
+apk: zig_$(VERSION)_Linux_x86_64.tar.xz verify
 ifeq ($(GITLAB_CI),)
 ifeq ($(shell which nfpm),)
 	@echo "Need to install nFPM first..."
 	@go install github.com/goreleaser/nfpm/v2/cmd/nfpm@latest
 endif
 endif
-	@rm -rf pdfcpu_$(VERSION)_Linux_x86_64/ pdfcpu/
-	@tar xvf pdfcpu_$(VERSION)_Linux_x86_64.tar.xz 2>&1 > /dev/null
-	@mv pdfcpu_$(VERSION)_Linux_x86_64/ pdfcpu/
-	@echo -n "Create pdfcpu $(VERSION) "
+	@rm -rf zig-linux-x86_64-$(VERSION).tar.xz/ zig/
+	@tar xvf zig-linux-x86_64-$(VERSION).tar.xz 2>&1 > /dev/null
+	@mv zig-linux-x86_64-$(VERSION)/ zig/
+	@echo -n "Create zig $(VERSION) "
 	@VERSION=$(VERSION) nfpm package --packager apk --target .
-	@rm -rf pdfcpu_$(VERSION)_Linux_x86_64/ pdfcpu/
+	@rm -rf zig-linux-x86_64-$(VERSION).tar.xz/ zig/ *.minisig
 
 .phony: clean
 clean:
