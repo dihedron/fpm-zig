@@ -3,7 +3,7 @@ PACKAGE_DOWNLOAD_URL=https://ziglang.org/download/$(VERSION)/zig-linux-x86_64-$(
 SIGNATURE_DOWNLOAD_URL=https://ziglang.org/download/$(VERSION)/zig-linux-x86_64-$(VERSION).tar.xz.minisig
 SIGNATURE=RWSGOq2NVecA2UPNdBUZykf1CCb147pkmdtYxgb3Ti+JO/wCYvhbAb/U
 
-zig_$(VERSION)_Linux_x86_64.tar.xz:
+zig-linux-x86_64-$(VERSION).tar.xz:
 	@wget $(PACKAGE_DOWNLOAD_URL)
 	@wget $(SIGNATURE_DOWNLOAD_URL)
 
@@ -20,7 +20,7 @@ setup-tools:
 	@go install github.com/goreleaser/nfpm/v2/cmd/nfpm@latest
 
 .phony: deb
-deb: zig_$(VERSION)_Linux_x86_64.tar.xz verify
+deb: zig-linux-x86_64-$(VERSION).tar.xz verify
 ifeq ($(GITLAB_CI),)
 ifeq ($(shell which nfpm),)
 	@echo "Need to install nFPM first..."
@@ -32,10 +32,10 @@ endif
 	@mv zig-linux-x86_64-$(VERSION)/ zig/
 	@echo -n "Create zig $(VERSION) "
 	@VERSION=$(VERSION) nfpm package --packager deb --target .
-	@rm -rf zig-linux-x86_64-$(VERSION).tar.xz/ zig/ *.minisig
+	@rm -rf zig-linux-x86_64-$(VERSION).tar.xz/ zig/
 
 .phony: rpm
-rpm: zig_$(VERSION)_Linux_x86_64.tar.xz verify
+rpm: zig-linux-x86_64-$(VERSION).tar.xz verify
 ifeq ($(GITLAB_CI),)
 ifeq ($(shell which nfpm),)
 	@echo "Need to install nFPM first..."
@@ -47,14 +47,14 @@ endif
 	@mv zig-linux-x86_64-$(VERSION)/ zig/
 	@echo -n "Create zig $(VERSION) "
 	@VERSION=$(VERSION) nfpm package --packager rpm --target .
-	@rm -rf zig-linux-x86_64-$(VERSION).tar.xz/ zig/ *.minisig
+	@rm -rf zig-linux-x86_64-$(VERSION).tar.xz/ zig/
 
 
 # TODO: run a cleanup task removing go/ only once:
 # see https://gist.github.com/APTy/9a9eb218f68bc0b4beb133b89c9def14
 
 .phony: apk
-apk: zig_$(VERSION)_Linux_x86_64.tar.xz verify
+apk: zig-linux-x86_64-$(VERSION).tar.xz verify
 ifeq ($(GITLAB_CI),)
 ifeq ($(shell which nfpm),)
 	@echo "Need to install nFPM first..."
@@ -66,7 +66,7 @@ endif
 	@mv zig-linux-x86_64-$(VERSION)/ zig/
 	@echo -n "Create zig $(VERSION) "
 	@VERSION=$(VERSION) nfpm package --packager apk --target .
-	@rm -rf zig-linux-x86_64-$(VERSION).tar.xz/ zig/ *.minisig
+	@rm -rf zig-linux-x86_64-$(VERSION).tar.xz/ zig/
 
 .phony: clean
 clean:
