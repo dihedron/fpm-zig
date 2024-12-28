@@ -1,5 +1,5 @@
 # check https://nfpm.goreleaser.com/configuration for detailed usage
-name: "pdfcpu"
+name: "zig"
 arch: "amd64"
 platform: "linux"
 version: "${VERSION}"
@@ -9,15 +9,14 @@ provides:
   - pdfcpu
 maintainer: "Andrea Funtò <dihedron.dev@gmail.com>"
 description: |
-  pdfcpu is a PDF processing library written in Go that supports encryption
-  and offers both an API and a command-line interface (CLI). It is compatible
-  with all PDF versions with basic support and ongoing improvement for PDF 2.0
-  (ISO-32000-2).
-vendor: "pdfcpu"
-homepage: "https://github.com/pdfcpu"
-license: "https://github.com/pdfcpu/LICENSE.txt"
+  Zig is a general-purpose programming language and toolchain
+  for maintaining robust, optimal and reusable software.
+vendor: "zig"
+homepage: "https://ziglang.org/"
+license: "https://github.com/ziglang/zig/blob/master/LICENSE"
 contents:
-  - src: pdfcpu/pdfcpu
-    dst: /usr/local/bin/pdfcpu
+  - src: zig/
+    dst: /usr/local/zig/
+    type: tree
 rpm:
   packager: "Andrea Funtò <dihedron.dev@gmail.com>"

@@ -2,4 +2,5 @@
 *.deb
 *.rpm
 *.apk
-pdfcpu*/
+zig*/
+*.minisig

@@ -1,10 +1,10 @@
 # fpm-pdfcpu
 
-A simple Makefile to create `.deb` and `.rpm` packages of the upstream pdfcpu utility.
+A simple Makefile to create `.deb` and `.rpm` packages of the upstream zig compiler.
 
 ## Building a [deb|rpm] package
 
-In order to build the package for the latest verion of the pdfcpu utility for Ubuntu or Debian based Linux distributions, run the Makefile as follows:
+In order to build the package for the latest verion of the zig compile for Ubuntu or Debian based Linux distributions, run the Makefile as follows:
 
 ```bash
 $> make deb
@@ -22,7 +22,7 @@ To create an APK package (for Alpine) run:
 $> make apk
 ```
 
-The makefile will automatically download the `tar.xz` package from https://github.com/pdfcpu and repackage it.
+The makefile will automatically download the `tar.xz` package from https://ziglang.org/download/ and repackages it.
 
 To clean all packages and downloaded files run `make clean`.
 
