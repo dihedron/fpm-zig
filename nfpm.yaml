@@ -6,7 +6,7 @@ version: "${VERSION}"
 epoch: 1
 section: default
 provides:
-  - pdfcpu
+  - zig
 maintainer: "Andrea Funtò <dihedron.dev@gmail.com>"
 description: |
   Zig is a general-purpose programming language and toolchain
