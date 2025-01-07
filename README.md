@@ -1,6 +1,6 @@
 # fpm-zig
 
-A simple Makefile to create `.deb` and `.rpm` packages of the zig compiler.
+A simple Makefile to create `.deb` and `.rpm` packages of the [zig compiler](https://ziglang.org/).
 
 ## Building a [deb|rpm] package
 
