@@ -1,0 +1,21 @@
+# check https://nfpm.goreleaser.com/configuration for detailed usage
+name: "zls"
+arch: "amd64"
+platform: "linux"
+version: "${VERSION}"
+epoch: 1
+section: default
+provides:
+  - zls
+maintainer: "Andrea Funtò <dihedron.dev@gmail.com>"
+description: |
+  ZLS is the Zig Language Server.
+vendor: "zigtools"
+homepage: "https://github.com/zigtools/zls"
+license: "https://github.com/ziglang/zig/blob/master/LICENSE"
+contents:
+  - src: zls/zig-out/bin/zls
+    dst: /usr/local/bin/zls
+    type: file
+rpm:
+  packager: "Andrea Funtò <dihedron.dev@gmail.com>"

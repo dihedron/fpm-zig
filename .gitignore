@@ -3,4 +3,5 @@
 *.rpm
 *.apk
 zig*/
+zls/
 *.minisig
